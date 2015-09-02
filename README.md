@@ -1,2 +1,2 @@
 # minesweeper
-Another one attempt to create of minesweeper using Java
+Another one attempt to create minesweeper using Java
