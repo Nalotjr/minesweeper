@@ -39,10 +39,13 @@ public class MineSweeperMinefield extends JPanel {
     private Boolean gameFinished;
     // Instance of MineSweeperTimer class
     private MineSweeperTimer gameTimer;
-
+    // Label for number of flags displaying
     private JLabel flagsCounterLabel;
+    // Label for game time displaying
     private JLabel timeCounterLabel;
+    // Label for mine image displaying
     private JLabel mineImageLabel;
+    // Label for watches image displaying
     private JLabel watchImageLabel;
 
     // Instance of MineSweeperUserInterface class.
@@ -226,28 +229,33 @@ public class MineSweeperMinefield extends JPanel {
         gameTimer.setTimerActive(timerActive);
     }
 
-
+    // Method returns timer activity state
     public Boolean getGameTimer () {
-        return gameTimer.getTimerActive();
+        return gameTimer.isTimerActive();
     }
 
+    // Method returns number of ticks, was counted by timer
     public int getGameTimerResult () {
         return gameTimer.getTimeCounter();
     }
 
+    //  timer (sets tick counter at 0)
     public void resetGameTimer () {
         gameTimer.resetTimer();
     }
 
+    // Method sets 0 at flagsCounterLabel
     public void resetFlagsCounter () {
         flagsCounterLabel.setText(digitsFormat.format(0));
     }
 
+    // Method return instance of MineSweeperMinefieldInterface class;
     public MineSweeperMinefieldInterface getMinefieldInterface () {
         return minefieldInterface;
     }
 
-    public void setFlagsNubberAtLabel (int flagsNubber) {
-        flagsCounterLabel.setText(digitsFormat.format(flagsNubber));
+    // Method sets number of flags at flagsCounterLabel
+    public void setFlagsNumberAtLabel (int flagsNumber) {
+        flagsCounterLabel.setText(digitsFormat.format(flagsNumber));
     }
 }
