@@ -73,7 +73,7 @@ public class MineSweeperSettingsDialog extends JDialog {
                 setVisible(false);
                 if (!selectionGroup.getSelection().getActionCommand().equals(selectedSize)) {
                     parent.setFieldSize(selectionGroup.getSelection().getActionCommand());
-                    parent.ResetMinefieldPanel(selectionGroup.getSelection().getActionCommand());
+                    parent.ResetMinefieldPanel();
                 }
                 dispose();
             }
