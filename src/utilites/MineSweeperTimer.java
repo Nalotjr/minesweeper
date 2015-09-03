@@ -63,7 +63,7 @@ public class MineSweeperTimer {
      * Method returns current state of activity for timer.
      * @return timerActive ("true" if timer is active, "false" if not)
      */
-    public boolean getTimerActive() {
+    public boolean isTimerActive() {
         return timerActive;
     }
 
