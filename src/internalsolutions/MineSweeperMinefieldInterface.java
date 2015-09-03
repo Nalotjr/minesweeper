@@ -158,13 +158,13 @@ public class MineSweeperMinefieldInterface {
             selectedCell.setFlagSetUpAt(false);
             selectedCell.setIcon(parent.getIcon(11));
             flagsForSetUp++;
-            parent.setFlagsNubberAtLabel(flagsForSetUp);
+            parent.setFlagsNumberAtLabel(flagsForSetUp);
         } else {
             if(flagsForSetUp != 0) {
                 selectedCell.setFlagSetUpAt(true);
                 selectedCell.setIcon(parent.getIcon(9));
                 flagsForSetUp--;
-                parent.setFlagsNubberAtLabel(flagsForSetUp);
+                parent.setFlagsNumberAtLabel(flagsForSetUp);
             }
         }
     }
