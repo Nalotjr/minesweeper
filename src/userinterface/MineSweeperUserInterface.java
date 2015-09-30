@@ -24,7 +24,7 @@ public class MineSweeperUserInterface extends JFrame {
     private MineSweeperMinefield minefieldPanel;
 
     /**
-     * Constructor initiates panel with minefield and menu and made all visible;
+     * Constructor initiates panel with minefield and menu and do all visible;
      */
     public MineSweeperUserInterface()
     {
@@ -53,6 +53,8 @@ public class MineSweeperUserInterface extends JFrame {
         SettingsDAOFactory settingsFactory = SettingsDAOFactory.getDAOFactory(SettingsDAOFactory.CONFIG);
         SettingsDAO settingsDAO = settingsFactory.manageSettingsDAO();
         fieldSizeList = settingsDAO.getData();
+
+
 
         // reading high scores from file
         settingsFactory = SettingsDAOFactory.getDAOFactory(SettingsDAOFactory.HISCORES);
