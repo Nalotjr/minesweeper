@@ -40,7 +40,7 @@ public class MineSweeperMenuBar extends JMenuBar {
         JMenuItem gameMenuExit = new JMenuItem("Exit");
         gameMenuExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ev){
-                System.exit(0);;
+                System.exit(0);
             }
         });
 

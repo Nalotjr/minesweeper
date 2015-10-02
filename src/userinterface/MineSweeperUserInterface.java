@@ -28,6 +28,8 @@ public class MineSweeperUserInterface extends JFrame {
      */
     public MineSweeperUserInterface()
     {
+        super("MINESWEEPER");
+
         // initiating minefield panel and menu bar
         minefieldPanel = new MineSweeperMinefield(this);
         JMenuBar mainMenu = new MineSweeperMenuBar(this, (MineSweeperMinefield) minefieldPanel);
@@ -53,8 +55,6 @@ public class MineSweeperUserInterface extends JFrame {
         SettingsDAOFactory settingsFactory = SettingsDAOFactory.getDAOFactory(SettingsDAOFactory.CONFIG);
         SettingsDAO settingsDAO = settingsFactory.manageSettingsDAO();
         fieldSizeList = settingsDAO.getData();
-
-
 
         // reading high scores from file
         settingsFactory = SettingsDAOFactory.getDAOFactory(SettingsDAOFactory.HISCORES);
