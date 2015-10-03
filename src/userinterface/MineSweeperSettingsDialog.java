@@ -19,12 +19,21 @@ public class MineSweeperSettingsDialog extends JDialog {
 
         String selectedSize = parent.getFieldSize();
 
-        GridBagLayout gbag = new GridBagLayout ();
+        JPanel settingsDialogPanel = new JPanel(new GridBagLayout ());
         GridBagConstraints gbc = new GridBagConstraints();
-        setLayout(gbag);
+
+        gbc.weightx = 0.5;
+        gbc.weighty = 0.5;
+        gbc.insets = new Insets(10,5,0,5);
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.gridy = 0;
+        gbc.gridx = 0;
+        JLabel selectionText = new JLabel("<html><center><font size=4 face=Arial>Select size of minefield</font>" +
+                "</center></html>");
+        settingsDialogPanel.add(selectionText, gbc);
 
         Box selectionBox = Box.createHorizontalBox();
-        Box buttonBox = Box.createHorizontalBox();
+        ButtonGroup selectionGroup = new ButtonGroup();
 
         boolean statusSmallButton = false;
         boolean statusMediumButton = false;
@@ -46,8 +55,6 @@ public class MineSweeperSettingsDialog extends JDialog {
         JRadioButton mediumButton = new JRadioButton("Medium",statusMediumButton);
         JRadioButton largeButton = new JRadioButton("Large",statusLargeButton);
 
-        ButtonGroup selectionGroup = new ButtonGroup();
-
         // connecting keywords, for minefield sizes, with JRadioButtons
         smallButton.setActionCommand("small");
         mediumButton.setActionCommand("medium");
@@ -58,15 +65,24 @@ public class MineSweeperSettingsDialog extends JDialog {
         selectionGroup.add(largeButton);
 
         selectionBox.add(smallButton);
+        selectionBox.add(Box.createHorizontalStrut(12));
         selectionBox.add(mediumButton);
+        selectionBox.add(Box.createHorizontalStrut(12));
         selectionBox.add(largeButton);
 
+        gbc.insets = new Insets(0,5,0,5);
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.gridy = 1;
+        settingsDialogPanel.add(selectionBox, gbc);
+
+
+        Box buttonBox = Box.createHorizontalBox();
         JButton okButton = new JButton("OK");
-        JButton closeButton = new JButton("Close");
+        JButton cancelButton = new JButton("Cancel");
 
         buttonBox.add(okButton);
         buttonBox.add(Box.createHorizontalStrut(12));
-        buttonBox.add(closeButton);
+        buttonBox.add(cancelButton);
 
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -78,35 +94,23 @@ public class MineSweeperSettingsDialog extends JDialog {
                 dispose();
             }
         });
-        closeButton.addActionListener(new ActionListener() {
+        cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 dispose();
             }
         });
 
-        JLabel selectionText = new JLabel("<html>Select size of minefield</html>");
-
+        gbc.insets = new Insets(0,5,10,5);
+        gbc.anchor = GridBagConstraints.PAGE_END;
         gbc.gridy = 2;
-        gbc.gridx = 0;
-        gbc.weighty = 0.5;
-        gbag.setConstraints(buttonBox, gbc);
-        gbc.gridy = 1;
-        gbc.gridx = 0;
-        gbc.weighty = 1;
-        gbag.setConstraints(selectionBox, gbc);
-        gbc.gridy = 0;
-        gbc.gridx = 0;
-        gbc.weighty = 0.5;
-        gbag.setConstraints(selectionText, gbc);
+        settingsDialogPanel.add(buttonBox, gbc);
 
-        add(selectionText);
-        add(selectionBox);
-        add(buttonBox);
+        add(settingsDialogPanel);
 
         setTitle("Settings");
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        setSize(400,200);
+        setSize(300,160);
         setLocationRelativeTo(null);
         setResizable(false);
         setModal(true);

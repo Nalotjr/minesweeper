@@ -43,12 +43,24 @@ public class MineSweeperAddHiScore extends JDialog {
                 break;
         }
 
-        GridBagLayout gbag = new GridBagLayout ();
+        JPanel addHiScoreDialogPanel = new JPanel(new GridBagLayout ());
         GridBagConstraints gbc = new GridBagConstraints();
-        setLayout(gbag);
 
         // Creates text field for entering player's name, and limits number of letters.
-        JTextField nameField = new JTextField("Player",17);
+
+        gbc.weightx = 0.5;
+        gbc.weighty = 0.5;
+        gbc.insets = new Insets(10,5,0,5);
+        gbc.anchor = GridBagConstraints.PAGE_START;
+        gbc.gridy = 0;
+        gbc.gridx = 0;
+        JLabel aboutText = new JLabel ("<html><center><font size=4 face=Arial>Enter Your name</font></center></html>");
+        addHiScoreDialogPanel.add(aboutText, gbc);
+
+        gbc.gridy = 1;
+        gbc.insets = new Insets(0,5,0,5);
+        gbc.anchor = GridBagConstraints.CENTER;
+        JTextField nameField = new JTextField(17);
         nameField.setDocument(new PlainDocument(){
             @Override
             public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
@@ -57,13 +69,14 @@ public class MineSweeperAddHiScore extends JDialog {
                     }
                 }
         });
+        nameField.setText("Player");
         nameField.selectAll();
-        gbc.gridy = 1;
-        gbc.gridx = 0;
-        gbc.weighty = 1;
-        gbag.setConstraints(nameField, gbc);
+        addHiScoreDialogPanel.add(nameField, gbc);
 
         // Creates "OK" button and saves high score if it's pressed.
+        gbc.gridy = 2;
+        gbc.insets = new Insets(0,5,10,5);
+        gbc.anchor = GridBagConstraints.PAGE_END;
         JButton okButton = new JButton ("OK");
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -81,21 +94,9 @@ public class MineSweeperAddHiScore extends JDialog {
                 new MineSweeperHiScoreDialog(parent);
             }
         });
-        gbc.gridy = 2;
-        gbc.gridx = 0;
-        gbc.weighty = 1;
-        gbag.setConstraints(okButton, gbc);
+        addHiScoreDialogPanel.add(okButton, gbc);
 
-        JLabel aboutText = new JLabel ("<html><center><font size=4 face=Arial>Enter Your name</font></center></html>");
-        gbc.gridy = 0;
-        gbc.gridx = 0;
-        gbc.weighty = 1;
-        gbag.setConstraints(aboutText, gbc);
-
-        add(aboutText);
-        add(nameField);
-        add(okButton);
-
+        add(addHiScoreDialogPanel);
         setTitle("New High Score");
         setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         setSize(300,200);
